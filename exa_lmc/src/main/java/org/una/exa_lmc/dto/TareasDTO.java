@@ -29,4 +29,5 @@ public class TareasDTO {
     private double urgencia;
     private double prioridad;
     private double porcentaje_avance;
+    private ProyectosDTO proyectos;
 }
