@@ -23,6 +23,7 @@ import lombok.ToString;
 public class TareasDTO {
 
     private Long id;
+    private String descripcion;
     private Date fecha_inicio;
     private Date fecha_finalizacion;
     private double importancia;

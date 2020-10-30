@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,8 +31,7 @@ import org.una.exa_lmc.services.IProyectosService;
  * @author Luis
  */
 @RestController
-@RequestMapping("/proyectos")
-
+@RequestMapping("/exa_lmc_proyectos")
 public class ProyectosController {
 
     final String MENSAJE_VERIFICAR_INFORMACION = "Debe verifiar el formato y la información de su solicitud con el formato esperado";
@@ -39,7 +40,8 @@ public class ProyectosController {
     private IProyectosService proyectosService;
 
     @GetMapping()
-    public @ResponseBody
+    @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+    public @ResponseBody    
     ResponseEntity<?> findAll() {
         try {
             return new ResponseEntity<>(proyectosService.findAll(), HttpStatus.OK);
